@@ -4,14 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Property;
 use Illuminate\Http\Request;
+use App\Services\OrmService;
 
 class PropertyController extends Controller
 {
     public function index(){
 
-        $properties = Property::where('sold', '0')
-                             ->orderBy('created_at', 'DESC')
-                             ->get();
+        $properties = OrmService::getPropertyLatest();
 
         return view('property.index',[
             'properties' => $properties

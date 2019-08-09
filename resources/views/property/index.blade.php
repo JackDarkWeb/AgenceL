@@ -22,4 +22,7 @@
         @endforelse
     </div>
 
+    <div class="mt-5">
+        {{$properties->links()}}
+    </div>
 @stop

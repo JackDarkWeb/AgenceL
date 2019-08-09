@@ -8,8 +8,12 @@
 <body>
 
 @include('layouts.nav')
+@include('includes.flash_message')
 
-<div class="container">
+<div class="container mt-4">
+
+    @stack('notice')
+
     @yield('content')
 </div>
 </body>

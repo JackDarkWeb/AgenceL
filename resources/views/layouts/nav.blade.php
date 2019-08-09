@@ -6,13 +6,20 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+
+            @if(isset($menu_admin) && $menu_admin == true)
+                <li class="nav-item">
+                    <a class="nav-link {% if current_menu is defined and  current_menu == 'properties' %} active text-warning{% endif  %}" href="{{ route('admin.property.index') }}">Properties<span class="sr-only">(current)</span></a>
+                </li>
+            @else
             <li class="nav-item">
                 <a class="nav-link {% if current_menu is defined and  current_menu == 'properties' %} active text-warning{% endif  %}" href="{{ route('property.index') }}">Buy <span class="sr-only">(current)</span></a>
             </li>
+            @endif
 
             @if(isset($menu_admin) && $menu_admin == true)
             <li class="nav-item">
-                <a class="nav-link" href="">Create the new property</a>
+                <a class="nav-link" href="{{ route('admin.property.create') }}">Create the new property</a>
             </li>
             @endif
         </ul>

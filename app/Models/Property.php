@@ -13,6 +13,7 @@ class Property extends Model
     ];
 
     public $timestamps = true;
+    protected $table = 'properties';
 
     protected $fillable = [
         'title',
@@ -38,4 +39,17 @@ class Property extends Model
     public function getFormattedPriceAttribute():string{
         return number_format($this->price, 0, '', ' ');
     }
+
+    /**
+     * @return array
+     */
+    public function getHeatChoicesAttribute(){
+        $choices = self::HEAT;
+        $output = [];
+        foreach ($choices as $k => $v){
+            $output[$v] = $k;
+        }
+        return $output;
+    }
+
 }
